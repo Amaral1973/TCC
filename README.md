@@ -5,9 +5,9 @@ Arquivos
 
 <a href="https://bit.ly/3IrcAV8">FlyoutPage</a>
 
-<h1>Combobox Dinamico</h1>
+## Combobox Dinamico
 
-$pesquisa = mysqli_query($conn, "SELECT * FROM projeto");
+$pesquisa = mysqli_query($conn, "SELECT * FROM projeto");</br>
             $row = mysqli_num_rows($pesquisa);
             echo '<select class="form-select" name="projeto" style="width: 400px;">';
             if($row > 0){
