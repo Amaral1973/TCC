@@ -25,3 +25,34 @@ echo '<select class="form-select" name="projeto" style="width: 400px;">';
    }
 echo '</select>';
 ```
+
+## Menu Dinamico:alien:
+```
+<?php
+    $con = mysqli_connect("localhost","root","","babearia");
+    if(!$con)
+    {
+       echo "erro";
+    }
+    $usuario = $_SESSION["user"];
+    $pesquisa = mysqli_query($con, "SELECT cpf,tipo FROM usuario WHERE cpf=$usuario");
+    $row = mysqli_num_rows($pesquisa);
+    if($row > 0){
+        while($registro = $pesquisa-> fetch_array()){
+            $tipo = $registro['tipo'];
+        }
+    }
+    if ($tipo == "admin") {
+        echo "administrador";
+    }
+    elseif ($tipo == "funcionario") {
+        echo "funcionario";
+    }
+    elseif ($tipo == "cliente") {
+        echo "cliente";
+    }
+    else {
+        echo "publico";
+    }
+?>
+```
