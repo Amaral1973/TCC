@@ -11,7 +11,8 @@ Arquivos de mobile e web, para suporte no TCC das turmas TDS - SENAI
 ## Links:alien:
 
 [Tutoriais do Xamarin.Forms](https://learn.microsoft.com/pt-br/xamarin/get-started/tutorials/)<br/>
-[API WhatsApp](https://learn.microsoft.com/pt-br/xamarin/get-started/tutorials/)
+[API WhatsApp](https://learn.microsoft.com/pt-br/xamarin/get-started/tutorials/)<br/>
+[Gráficos no Xamarin (Microchart)](https://learn.microsoft.com/pt-br/xamarin/get-started/tutorials/](https://bertuzzi.medium.com/o-x-do-xamarin-forms-gr%C3%A1ficos-6b0f384de5c6)
 
 ## Combobox Dinamico:alien:
 ```
