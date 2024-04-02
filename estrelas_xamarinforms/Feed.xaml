@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+             x:Class="AppEnsalamento.Feed">
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation DurationIn="400"
+                                   DurationOut="300"
+                                   HasBackgroundAnimation="True"
+                                   PositionIn="Center"
+                                   PositionOut="Center"
+                                   ScaleIn="1"
+                                   ScaleOut="0.8"/>
+    </pages:PopupPage.Animation>
+    <StackLayout BackgroundColor="White">
+        <Image Source="senai" HorizontalOptions="Center"/>
+        <Label Text="Ensalamento" TextColor="DarkBlue" FontSize="Large" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+        <Label Text="Desenvolvido pela área de TI - SENAI - CTM" HorizontalTextAlignment="Center"/>
+        <Label Text="MARINGÁ - 2023" HorizontalTextAlignment="Center" FontAttributes="Bold"/>
+        <Label Text="Avaliação e Feedback" TextColor="Green" HorizontalTextAlignment="Center" FontSize="Medium" FontAttributes="Bold"/>
+        <StackLayout Orientation="Horizontal" x:Name="rattingBar" HorizontalOptions="Center">
+            <Label Text="★" FontSize="30" x:Name="star1" StyleId="star1">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <Label Text="★" FontSize="30" x:Name="star2" StyleId="star2">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <Label Text="★" FontSize="30" x:Name="star3" StyleId="star3">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <Label Text="★" FontSize="30" x:Name="star4" StyleId="star4">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <Label Text="★" FontSize="30" x:Name="star5" StyleId="star5">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                </Label.GestureRecognizers>
+            </Label>
+        </StackLayout>
+        <StackLayout>
+            <Label x:Name="errorMessage" IsVisible="False" FontSize="Large" TextColor="Red" VerticalOptions="CenterAndExpand" Margin="20"/>
+            <Frame BackgroundColor="White" CornerRadius="35" Margin="15" HeightRequest="200">
+                <Editor x:Name="edtFeed" MaxLength="140" TextChanged="edtFeed_TextChanged" Placeholder="Deixe seu feedback sobre o aplicativo" Keyboard="Text"/>
+            </Frame>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Label Text="Máximo de 140 caracteres: "/>
+                <Label x:Name="textCounter" FontAttributes="Bold"/>
+            </StackLayout>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="20">
+            <Button BackgroundColor="Green" TextColor="White" Text="Enviar Feedback" FontAttributes="Bold" CornerRadius="45" Padding="15" x:Name="Enviar" Clicked="Enviar_Clicked"/>
+            <Button BackgroundColor="Red" TextColor="White" Text="SAIR" FontAttributes="Bold" CornerRadius="45" Padding="15" x:Name="Sair" Clicked="Sair_Clicked"/>
+        </StackLayout>
+    </StackLayout>
+</pages:PopupPage>
