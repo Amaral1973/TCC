@@ -104,3 +104,4 @@ private void btnInserir_Click(object sender, EventArgs e)
                 MessageBox.Show(er.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        ...
