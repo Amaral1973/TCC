@@ -57,15 +57,51 @@ echo '</select>';
     }
 ?>
 ```
-## Combobox Dinamico
+## Salvando o caminho da imagem no Banco de Dados C#
 ```
-$pesquisa = mysqli_query($conn, "SELECT * FROM projeto");
-$row = mysqli_num_rows($pesquisa);
-echo '<select class="form-select" name="projeto" style="width: 400px;">';
-    if($row > 0){
-       while($registro = $pesquisa-> fetch_array()){
-       echo '<option value="'.$registro['id'].'">'.$registro['projeto'].'</option>';
-       }
-   }
-echo '</select>';
+private void btnInserir_Click(object sender, EventArgs e)
+        {
+            if (txtNome.Text == string.Empty || txtPreco.Text == string.Empty)
+            {
+                MessageBox.Show("Por favor, preencha todos os campos do formulário.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            try
+            {
+                Produto produto = new Produto();
+                if (produto.RegistroRepetido(txtNome.Text, CbxTipo.Text) == true)
+                {
+                    MessageBox.Show("Produto já existe em nossa base de dados!", "Produto repetido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtNome.Text = "";
+                    txtPreco.Text = "";
+                    CbxTipo.Text = "";
+                    txtQuantidade.Text = "";
+                    pbxFoto.Image = null;
+                    pbxFoto.Update();
+                    this.ActiveControl = txtNome;
+                    return;
+                }
+                else
+                {
+                    string foto = txtNome.Text.Replace(" ", "");
+                    pbxFoto.Image.Save(@"C:\Programas\LojaGeek\Produtos\" + foto + ".jpg");
+                    int quantidade = Convert.ToInt32(txtQuantidade.Text);
+                    produto.Inserir(txtNome.Text, CbxTipo.Text, quantidade, txtPreco.Text, foto);
+                    MessageBox.Show("Produto cadastrado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    List<Produto> produtos = produto.listaprodutos();
+                    dgvProduto.DataSource = produtos;
+                    txtNome.Text = "";
+                    txtPreco.Text = "";
+                    CbxTipo.Text = "";
+                    txtQuantidade.Text = "";
+                    pbxFoto.Image = null;
+                    pbxFoto.Update();
+                    this.ActiveControl = txtNome;
+                }
+            }
+            catch (Exception er)
+            {
+                MessageBox.Show(er.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 ```
